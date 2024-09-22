@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rockpaperscissorsgame.R
+import com.example.rockpaperscissorsgame.game.GameManager
+import com.example.rockpaperscissorsgame.game.Weapon
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,30 +28,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupButtonListeners() {
         findViewById<Button>(R.id.button_papper).setOnClickListener {
-            executeNextActivity(getString(R.string.papper))
+            executeNextActivity(Weapon.PAPER)
         }
 
         findViewById<Button>(R.id.button_rock).setOnClickListener {
-            executeNextActivity(getString(R.string.rock))
+            executeNextActivity(Weapon.ROCK)
         }
 
         findViewById<Button>(R.id.button_scissors).setOnClickListener {
-            executeNextActivity(getString(R.string.scissors))
+            executeNextActivity(Weapon.SCISSORS)
         }
     }
 
-    private fun executeNextActivity(choice: String) {
+    private fun executeNextActivity(choice: Weapon) {
         val intent = Intent(this, SecondActivity::class.java)
-        intent.putExtra("KEY_USER", choice)
-        intent.putExtra("KEY_COMPUTER", getRandomItem())
+        intent.putExtra(SecondActivity.KEY_USER_CHOICE, choice.ordinal)
+        intent.putExtra(SecondActivity.KEY_COMPUTER_CHOICE, GameManager.getRandomWeapon().ordinal)
         startActivity(intent)
     }
 
-    private fun getRandomItem(): String {
-        return listOf<String>(
-            getString(R.string.scissors),
-            getString(R.string.rock),
-            getString(R.string.papper)
-        ).random()
-    }
 }

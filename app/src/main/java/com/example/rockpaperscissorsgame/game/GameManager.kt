@@ -21,4 +21,8 @@ object GameManager {
             else -> LOSE_TEXT
         }
     }
+
+    fun getRandomWeapon(): Weapon {
+        return Weapon.entries.random()
+    }
 }

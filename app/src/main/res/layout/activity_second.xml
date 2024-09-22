@@ -17,10 +17,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/text_result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="30dp"
-            android:text="You have lose"
+            android:text="You lose"
             android:textSize="25sp" />
 
         <TextView
@@ -28,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="30dp"
-            android:text="You have chosen:"
+            android:text="You chose:"
             android:textSize="20sp" />
 
         <TextView
